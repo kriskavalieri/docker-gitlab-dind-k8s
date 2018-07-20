@@ -1,4 +1,4 @@
-FROM docker:stable-dind
+FROM docker:18.03.1-ce-dind
 
 ARG KUBECTL_VERSION=1.8.10
 ARG HELM_VERSION=2.9.1

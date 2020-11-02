@@ -1,7 +1,7 @@
 FROM docker:18.03.1-ce-dind
 
-ARG KUBECTL_VERSION=1.8.10
-ARG HELM_VERSION=2.9.1
+ARG KUBECTL_VERSION=1.19.2
+ARG HELM_VERSION=3.4.0
 
 COPY .ssh /root/.ssh
 RUN apk update && apk add curl openssl bash git openssh-client grep && \

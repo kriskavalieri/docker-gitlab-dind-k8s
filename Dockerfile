@@ -64,9 +64,7 @@ RUN curl -s -o /usr/bin/kubectl -LO https://storage.googleapis.com/kubernetes-re
     chmod +x /usr/bin/kubectl
 
 # Node
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash && \
-    . ~/.bashrc && \
-    nvm install lts/erbium
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash && apt install nodejs
 
 ENTRYPOINT ["startup.sh"]
 CMD ["sh"]

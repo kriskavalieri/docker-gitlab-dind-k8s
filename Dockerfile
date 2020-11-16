@@ -4,7 +4,7 @@ ARG KUBECTL_VERSION=1.19.2
 ARG HELM_VERSION=3.4.0
 
 RUN apt update \
-    && apt install -y ca-certificates openssh-client \
+    && apt install -y ca-certificates openssh-client build-essential \
     wget curl iptables supervisor \
     && rm -rf /var/lib/apt/list/*
 

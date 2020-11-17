@@ -11,7 +11,11 @@ RUN apt update \
 ENV DOCKER_CHANNEL=stable \
 	DOCKER_VERSION=19.03.11 \
 	DOCKER_COMPOSE_VERSION=1.26.0 \
-	DEBUG=false
+	DEBUG=false \
+    DEBIAN_FRONTEND=noninteractive \
+    TZ=Europe/Berlin
+
+RUN ln -snf /usr/share/zoneinfo/Europe/Berlin /etc/localtime && echo "Europe/Berlin" > /etc/timezone
 
 # Docker installation
 RUN set -eux; \
@@ -65,6 +69,9 @@ RUN curl -s -o /usr/bin/kubectl -LO https://storage.googleapis.com/kubernetes-re
 
 # Node
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash && apt install nodejs
+
+# Retarded node-gyp
+RUN npm install -g node-gyp
 
 ENTRYPOINT ["startup.sh"]
 CMD ["sh"]

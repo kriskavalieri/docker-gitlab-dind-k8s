@@ -4,9 +4,11 @@ ARG KUBECTL_VERSION=1.19.2
 ARG HELM_VERSION=3.4.0
 
 RUN apt update \
-    && apt install -y ca-certificates openssh-client build-essential git\
+    && apt install -y python3-pip ca-certificates openssh-client build-essential git\
     wget curl iptables supervisor \
     && rm -rf /var/lib/apt/list/*
+
+RUN pip3 install pyaml
 
 ENV DOCKER_CHANNEL=stable \
 	DOCKER_VERSION=19.03.11 \
